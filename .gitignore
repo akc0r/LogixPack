@@ -1,0 +1,101 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+backend/lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Tests et résultats
+**/tests/**
+**/tests/instances/*.txt
+**/tests/scaling/*.txt
+**/benchmarks/results/*.json
+**/benchmarks/results/*.txt
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.temp
+temp_*
+demo_output.txt
+
+# SVG générés par visualize.py
+
+# Documentation
+**/docs/_build/
+*.svg
+
+# Rapports
+*.pdf
+rapport/
+**/docs/*.md
+
+# Ne pas ignorer les fichiers d'exemple
+!input.sample
+!output.sample
+
+# PyCharm
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+Thumbs.db
+
+# Next.js
+.next/
+out/
+**/node_modules/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vercel
+
+tests/**
+benchmarks/**
