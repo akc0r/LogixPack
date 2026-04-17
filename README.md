@@ -86,6 +86,43 @@ npm run dev
 
 <br/>
 
+## ⚙️ CI/CD & Packaging
+
+Le repository inclut maintenant une pipeline complete GitHub Actions:
+
+- **CI**: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
+    - Verifie le backend (installation dependances, compilation Python, tests si presents)
+    - Build le frontend Next.js
+    - Fait un smoke build des images Docker backend/frontend
+- **CD**: [`.github/workflows/release-package.yml`](./.github/workflows/release-package.yml)
+    - Declenche sur tag `v*` ou manuellement (`workflow_dispatch`)
+    - Build et push les images Docker vers GHCR
+    - Genere un package de deploiement (`.tar.gz`) avec `docker-compose.yml` + `.env`
+    - Publie les assets automatiquement dans la Release GitHub (si declenche par tag)
+
+### 🚢 Release rapide
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Le workflow CD produira:
+
+- `ghcr.io/<owner>/logixpack-backend:v1.0.0`
+- `ghcr.io/<owner>/logixpack-frontend:v1.0.0`
+- un bundle `logixpack-v1.0.0.tar.gz` pret a deployer
+
+### 📦 Lancer un bundle package
+
+Une fois l'archive extraite:
+
+```bash
+docker compose --env-file .env -f docker-compose.yml up -d
+```
+
+<br/>
+
 ## 🧩 The LIFO Constraint Explained
 
 The true complexity of LogixPack lies in the **Delivery Order Constraint**. Items destined for an earlier delivery stop **must not** be physically blocked by items intended for later stops. Imagine unloading a delivery truck: you cannot afford to empty half the truck on the side of the road just to reach a package trapped at the back.
